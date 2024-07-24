@@ -1,16 +1,30 @@
 body {
     text-align: center;
     background-color: gray;
+    font-family:"Calibri";
 }
 
 .search-bar {
     margin: auto;
+    font-size: 24px;
+    height: 30px;
+}
+
+.search-bar input {
+    height: 30px;
+    font-size: 24px;
+}
+.search-bar button {
+    height: 35px;
+    font-size: 24px;
+    width: fit-content;
 }
 
 
 .definitions-container {
     margin: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    min-height: 400px;
     width: 400px;
     height: fit-content;
 }

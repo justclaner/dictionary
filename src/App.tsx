@@ -8,18 +8,9 @@ export function App() {
   const [meaningsList, setMeaningsList] = useState<any[]>([]);
   const [meaningsDisplayList, setMeaningsDisplayList] = useState<any[]>([]);
   useEffect(()=>{
-    console.log(meaningsList);
     setMeaningsDisplayList([...meaningsList.map((obj,i)=>
-   {return(obj.shortdef.map((def:string)=><Definition wordType={obj.fl} definition={def} key={i}></Definition>))}
-    )])
-    // const displayList = meaningsList.map((obj,i)=>{
-    // //   return(
-    // //   obj.shortdef.map((def: string)=> {
-    // //     <Definition wordType={obj.fl} definition={def}/>
-    // //   })
-    // // )
-    // });
-    ;
+   {return(obj.shortdef.map((def:string,j:number)=><Definition wordType={obj.fl} definition={def} key={i} index={i} subIndex={j}></Definition>))}
+    )]);
   },[meaningsList])
 
   useEffect(()=>{
@@ -49,11 +40,11 @@ export function App() {
     <>
      <h1>Dictionary</h1>
      <div className="search-bar">
-     <input type="text" ref={userInput} /> <button onClick={() => {if (userInput.current) {generateWord(userInput.current.value)}}}>Search</button>
+     <label >Type in a word: <input type="text" ref={userInput} /> </label> <button onClick={() => {if (userInput.current) {generateWord(userInput.current.value)}}}>Search</button>
      </div>
     <br />
     <div className="definitions-container">
-      <h2>Definitions</h2>
+      <h1>{word}</h1>
       {meaningsDisplayList}
     </div>
     </>
