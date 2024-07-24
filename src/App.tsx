@@ -25,6 +25,8 @@ export function App() {
       const data = await response.json();
       console.log(data);
       setWord(word.toLowerCase());
+      let newMeaningsList = data.map((obj: { shortdef: string[]; })=>obj.shortdef[0]);
+      setMeaningsList(newMeaningsList);
       //setMeaningsList(data[0].meanings);
     } catch(error) {console.log(error);}
   }
