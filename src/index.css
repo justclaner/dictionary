@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    background-color: gray;
 }
 
 .search-bar {
@@ -12,4 +13,9 @@ body {
     border: 1px solid black;
     width: 400px;
     height: fit-content;
+}
+
+.word-container {
+    padding: 10px;
+    text-align: left;
 }
