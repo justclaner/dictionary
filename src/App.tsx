@@ -1,5 +1,5 @@
 import {useState, useEffect,useRef} from 'react'
-import Definition from './components/Definition.tsx'
+
 
 
 export function App() {
