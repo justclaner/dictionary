@@ -11,15 +11,31 @@ body {
 }
 
 .search-bar input {
+    border-radius: 15px;
+    padding:5px;
     height: 30px;
     font-size: 24px;
+    box-shadow: 1px 3px black;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-.search-bar button {
-    height: 35px;
+button {
+    border-radius: 15px;
+    padding: 7px;
+    height: fit-content;
     font-size: 24px;
     width: fit-content;
+    box-shadow: 1px 3px black;
 }
 
+button:active {
+    translate: 1px 3px;
+    box-shadow: 0 0;
+}
+
+input:focus {
+   outline: none;
+}
 
 .definitions-container {
     margin: auto;

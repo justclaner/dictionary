@@ -13,14 +13,6 @@ export function App() {
     )]);
   },[meaningsList])
 
-  useEffect(()=>{
-    console.log(word);
-  },[word])
-
-  useEffect(()=>{
-   console.log(meaningsDisplayList);
-  },[meaningsDisplayList])
-
   const generateWord = (word: string) : void => {
     fetchApi(word);
   }
@@ -30,9 +22,8 @@ export function App() {
       const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=b77546c7-26ca-47b0-babf-0ed812f5a88e`);
       console.log(response);
       const data = await response.json();
-      console.log(typeof data[0]);
+      if(typeof data[0] == "object") {setMeaningsList(data);} else {return;}
       setWord(word.toLowerCase());
-      if(typeof data[0] == "object") {setMeaningsList(data);}
     } catch(error) {console.log(error);}
   }
 
@@ -40,7 +31,10 @@ export function App() {
     <>
      <h1>Dictionary</h1>
      <div className="search-bar">
-     <label >Type in a word: <input type="text" ref={userInput} /> </label> <button onClick={() => {if (userInput.current) {generateWord(userInput.current.value)}}}>Search</button>
+     <input type="text" ref={userInput} placeholder='Type in a word' onKeyDown={(e)=>{
+      console.log(e.target);
+      if(e.key == 'Enter') {if (userInput.current) {fetchApi(userInput.current.value);}}
+     }} /> <button onClick={() => {if (userInput.current) {generateWord(userInput.current.value)}}}>Search</button>
      </div>
     <br />
     <div className="definitions-container">
