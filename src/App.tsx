@@ -10,17 +10,22 @@ export function App() {
   useEffect(()=>{
     console.log(meaningsList);
   },[meaningsList])
+
+  useEffect(()=>{
+    console.log(word);
+  },[word])
+
   const generateWord = (word: string) : void => {
     fetchApi(word);
   }
 
   async function fetchApi(word: string): Promise<void> {
     try {
-      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+      const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=b77546c7-26ca-47b0-babf-0ed812f5a88e`);
       const data = await response.json();
       console.log(data);
       setWord(word.toLowerCase());
-      setMeaningsList(data[0].meanings);
+      //setMeaningsList(data[0].meanings);
     } catch(error) {console.log(error);}
   }
 
