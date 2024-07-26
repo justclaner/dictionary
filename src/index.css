@@ -37,9 +37,16 @@ input:focus {
    outline: none;
 }
 
-.definitions-container {
-    margin: auto;
-    /* border: 1px solid black; */
+.data {
+display: flex;
+flex-wrap: wrap;
+width: fit-content;
+margin: auto;
+}
+
+.data-container {
+    display:inline-block;
+    margin: 10px;
     min-height: 400px;
     width: 400px;
     height: fit-content;
