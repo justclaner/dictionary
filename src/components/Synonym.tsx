@@ -9,7 +9,9 @@ function Synonym({synonyms, wordType} : propTypes) {
     function getSynonyms(synArray: string[]) : string {
         let synList = "";
         for (let i = 0; i < synArray.length; i++) {
-            synList += synArray[i] + " ";
+            if (i < synArray.length -1) {
+            synList += synArray[i] + ", ";
+            } else {synList += synArray[i];}
         }
         return synList;
     }

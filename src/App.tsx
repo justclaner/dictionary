@@ -17,15 +17,9 @@ export function App() {
 
   useEffect(()=>{
     setSynonymsDisplayList([...synonymsList.map((list,i)=>
-      {return(list.meta.syns.map((synonyms:string[],j:number) => <Synonym wordType={list.fl} synonyms={synonyms} key={i+"-"+j}/> ))}
+      {return(list.meta.syns.map((synonyms:string[],j:number) => <Synonym wordType={list.fl} synonyms={synonyms} key={i+"-"+j}/>))}
     )])
   },[synonymsList])
-
-  useEffect(()=>{
-    console.log(synonymsDisplayList);
-  },[synonymsDisplayList])
-
-
 
   async function fetchDef(word: string): Promise<void> {
     try {
@@ -41,7 +35,6 @@ export function App() {
     try {
       const response = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=65a19eff-62b8-47db-b6eb-fb644ca75733`)
       const data = await response.json();
-      console.log(data);
       if(typeof data[0] == "object") {setSynonymsList(data);} else {setSynonymsList([]);}
     } catch(error) {console.log(error);}
   }
